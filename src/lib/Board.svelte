@@ -12,6 +12,7 @@
     orientation = 'white',
     version = 0,
     shapes = [],
+    locked = false,
     onmove,
   }: {
     chess: Chess;
@@ -20,6 +21,8 @@
     version?: number;
     /** Arrows drawn on the board, such as the repertoire's moves from this position. */
     shapes?: DrawShape[];
+    /** When true, no pieces can be moved (for example while the opponent's move plays). */
+    locked?: boolean;
     onmove: (san: string) => void;
   } = $props();
 
@@ -35,7 +38,7 @@
       turnColor: turnColor(chess),
       check: chess.inCheck(),
       lastMove: last ? [last.from as Key, last.to as Key] : undefined,
-      movable: { color: turnColor(chess), dests: legalDests(chess) },
+      movable: { color: locked ? undefined : turnColor(chess), dests: legalDests(chess) },
     });
     cg.setAutoShapes(shapes);
   }
@@ -66,6 +69,7 @@
     void orientation;
     void version;
     void shapes;
+    void locked;
     sync();
   });
 </script>
