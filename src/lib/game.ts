@@ -24,9 +24,3 @@ export function playMove(chess: Chess, from: string, to: string): string | null 
   }
 }
 
-/** Pairs SAN moves into numbered rows: [[1, 'e4', 'e5'], [2, 'Nf3', undefined]]. */
-export function moveRows(history: string[]): [number, string, string | undefined][] {
-  const rows: [number, string, string | undefined][] = [];
-  for (let i = 0; i < history.length; i += 2) rows.push([i / 2 + 1, history[i], history[i + 1]]);
-  return rows;
-}

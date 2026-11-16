@@ -3,6 +3,7 @@
   import { Chessground } from 'chessground';
   import type { Api } from 'chessground/api';
   import type { Key } from 'chessground/types';
+  import type { DrawShape } from 'chessground/draw';
   import type { Chess } from 'chess.js';
   import { legalDests, playMove, turnColor } from './game';
 
@@ -10,12 +11,15 @@
     chess,
     orientation = 'white',
     version = 0,
+    shapes = [],
     onmove,
   }: {
     chess: Chess;
     orientation?: 'white' | 'black';
     /** Bump to make the board re-read the position after an outside change (undo, reset). */
     version?: number;
+    /** Arrows drawn on the board, such as the repertoire's moves from this position. */
+    shapes?: DrawShape[];
     onmove: (san: string) => void;
   } = $props();
 
@@ -33,6 +37,7 @@
       lastMove: last ? [last.from as Key, last.to as Key] : undefined,
       movable: { color: turnColor(chess), dests: legalDests(chess) },
     });
+    cg.setAutoShapes(shapes);
   }
 
   onMount(() => {
@@ -51,6 +56,7 @@
         },
       },
       draggable: { showGhost: true },
+      drawable: { enabled: false, visible: true },
     });
     sync();
     return () => cg?.destroy();
@@ -59,6 +65,7 @@
   $effect(() => {
     void orientation;
     void version;
+    void shapes;
     sync();
   });
 </script>

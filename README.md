@@ -23,8 +23,8 @@ Every push to `main` is tested and deployed to GitHub Pages by `.github/workflow
 
 ## Milestones
 
-1. Board on the iPad (installable shell, legal moves, undo, flip) ← current
-2. Repertoire builder
+1. Board on the iPad (installable shell, legal moves)
+2. Repertoire builder (White and Black trees, saved on the iPad) ← current
 3. Drill with FSRS
 4. PGN import and backup
 5. Polish

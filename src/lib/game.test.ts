@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { Chess } from 'chess.js';
-import { legalDests, moveRows, playMove, turnColor } from './game';
+import { legalDests, playMove, turnColor } from './game';
 
 describe('legalDests', () => {
   it('gives the 20 opening moves spread over 10 pieces', () => {
@@ -27,14 +27,5 @@ describe('playMove', () => {
   it('promotes to a queen', () => {
     const chess = new Chess('8/P7/8/8/8/8/8/k6K w - - 0 1');
     expect(playMove(chess, 'a7', 'a8')).toBe('a8=Q+');
-  });
-});
-
-describe('moveRows', () => {
-  it('pairs moves by number', () => {
-    expect(moveRows(['e4', 'e5', 'Nf3'])).toEqual([
-      [1, 'e4', 'e5'],
-      [2, 'Nf3', undefined],
-    ]);
   });
 });
