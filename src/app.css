@@ -1,0 +1,137 @@
+@import 'chessground/assets/chessground.base.css';
+@import 'chessground/assets/chessground.brown.css';
+@import 'chessground/assets/chessground.cburnett.css';
+
+:root {
+  --bg: #1f1d1a;
+  --panel: #2b2824;
+  --text: #ece8e1;
+  --muted: #a39d93;
+  --accent: #7fa650;
+  --button: #3a3631;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  color-scheme: dark;
+  -webkit-text-size-adjust: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overscroll-behavior: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: var(--bg);
+}
+
+main {
+  display: flex;
+  gap: 24px;
+  height: 100dvh;
+  padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right))
+    max(16px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+}
+
+.board-area {
+  flex: 0 0 auto;
+  width: min(100dvh - 32px, 100vw - 340px);
+  align-self: center;
+}
+
+.panel {
+  flex: 1 1 auto;
+  min-width: 260px;
+  display: flex;
+  flex-direction: column;
+  background: var(--panel);
+  border-radius: 12px;
+  padding: 20px;
+  overflow: hidden;
+}
+
+h1 {
+  margin: 0 0 4px;
+  font-size: 22px;
+}
+
+.status {
+  margin: 0 0 16px;
+  color: var(--muted);
+}
+
+.moves {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  font-variant-numeric: tabular-nums;
+}
+
+.moves li {
+  display: grid;
+  grid-template-columns: 3em 1fr 1fr;
+  padding: 6px 4px;
+  border-bottom: 1px solid #3a3631;
+}
+
+.moves .num {
+  color: var(--muted);
+}
+
+.moves .empty {
+  display: block;
+  color: var(--muted);
+  border: none;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+button {
+  flex: 1;
+  min-height: 48px;
+  font: inherit;
+  font-size: 17px;
+  color: var(--text);
+  background: var(--button);
+  border: none;
+  border-radius: 10px;
+}
+
+button:active {
+  background: var(--accent);
+}
+
+button:disabled {
+  opacity: 0.4;
+}
+
+/* Portrait: board on top, panel below. */
+@media (orientation: portrait) {
+  main {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .board-area {
+    width: min(100vw - 32px, 100dvh - 300px);
+    align-self: center;
+  }
+  .panel {
+    min-height: 0;
+  }
+}
