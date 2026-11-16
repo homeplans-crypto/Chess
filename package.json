@@ -13,6 +13,7 @@
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^5.0.3",
     "@tsconfig/svelte": "^5.0.4",
+    "fake-indexeddb": "^6.2.8",
     "svelte": "^5.28.1",
     "svelte-check": "^4.1.6",
     "typescript": "~5.8.3",
@@ -22,6 +23,7 @@
   },
   "dependencies": {
     "chess.js": "^1.4.0",
-    "chessground": "^9.2.1"
+    "chessground": "^9.2.1",
+    "idb": "^8.0.4"
   }
 }
